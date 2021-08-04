@@ -44,15 +44,15 @@ window.resizable(True,True)
 
 
 ScopeImage = tkinter.PhotoImage(file = "./scope.gif")
-
 myCanvas = tkinter.Canvas(window, bg='#ffffff', height=270, width=1020)
 myCanvas.place(x=0,y=10)
-myCanvas.pack()
-scrollbar=tkinter.Scrollbar(window)
-scrollbar=tkinter.Scrollbar(orient=tkinter.HORIZONTAL)
 
-scrollbar.pack(side="bottom", fill="x")
-scrollbar.config(command=myCanvas.xview)
+myCanvas.pack()
+delay_bar=tkinter.Scrollbar(myCanvas)
+delay_bar=tkinter.Scrollbar(orient=tkinter.HORIZONTAL)
+delay_bar.config(command=myCanvas.xview)
+
+delay_bar.pack(side="bottom", fill="x")
 myCanvas.pack() 
 
 bt_pulseon = tkinter.Button(window, text="pulse ON", width=15, fg="Brown",command=pulseON).place(x=10,y=450)
@@ -67,7 +67,8 @@ lb_count.place(x=10,y=410)
 #ret=dev.ctrl_transfer(0x40,0x21, 0x20, 0x0, "pulseOFF")
 
 #pen.color:=rgb($00,$ff,$ff);
-       
+ 
+ 
 
 while True:
     data= dev.read(0x81,1024*16,10)
@@ -97,3 +98,4 @@ window.mainloop()
 
 
     
+
